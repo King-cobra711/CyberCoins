@@ -8,15 +8,15 @@
 	const coinUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
 
 	let coins = [];
-	onMount(async () => {
-    const res = await fetch(coinUrl)
-	coins = await res.json();
-	})
-	const refresh = (async () => {
-	coins = [];
-    const res = await fetch(coinUrl)
-	coins = await res.json();
-	});
+	// onMount(async () => {
+    // const res = await fetch(coinUrl)
+	// coins = await res.json();
+	// })
+	// const refresh = (async () => {
+	// coins = [];
+    // const res = await fetch(coinUrl)
+	// coins = await res.json();
+	// });
 </script>
 
 <main class="text-center">

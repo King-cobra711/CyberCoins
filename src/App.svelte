@@ -30,7 +30,7 @@
 	<div class="flex bg-blue-900 justify-center">
 	{#if coins.length === 0}
 	<div class="bg-blue-900 justify-center m-auto	">
-	<img src="/spinner.gif" alt="loading"  class="w-32 h-32 my-48"/>
+	<img src="/spinner.gif" alt="loading"  class="w-32 h-32 my-38"/>
 	</div>
 	{:else}
 	<div class="flex flex-wrap bg-blue-900 justify-center m-auto">

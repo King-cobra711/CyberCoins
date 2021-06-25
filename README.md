@@ -21,7 +21,6 @@ The project is a simple cryptocurrencey trends tracker through use of API fetch 
 
 ## Starting the App
 
-- Make sure the MAMP servers are running.
 - in the terminal navigate to the CryptoCoins folder and then type `npm start`. Example:
 
 1. `cd /Users/Matt/Desktop/CryptoCoins`

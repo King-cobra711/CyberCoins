@@ -1,4 +1,4 @@
-# Beer Buddies
+# CyberCoins
 
 ## Description
 

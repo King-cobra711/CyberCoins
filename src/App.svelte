@@ -29,7 +29,7 @@
 	}
 </script>
 <main class="text-center">
-	<h1 class="tracking-widest bg-blue-900 pb-8 pt-4 text-5xl sm:text-7xl lg:text-9xl text-white underline ">CyberCoins</h1>
+	<h1 class="tracking-widest bg-blue-900 pb-6 pt-4 text-5xl sm:text-7xl lg:text-9xl text-white underline ">CyberCoins</h1>
 	<div class="flex justify-center bg-blue-900 py-2 pb-3" on:change={search}>
 		<input class="w-2/3 max-w-4xl mr-3 text-xl lg:text-4xl" placeholder="   search...">
 		<svg on:click={refresh} xmlns="http://www.w3.org/2000/svg" class="transform: scaleY(-1) h-10 w-10 text-white bg-blue-900 {spin === true ? 'animate-reverse-spin' : 'animate-none'}" viewBox="0 0 20 20" fill="currentColor">

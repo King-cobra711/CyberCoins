@@ -14,6 +14,7 @@
 	let spin = false;
 	let searchName = "";
 	let coinName = [];
+	let matchingCoins = true;
 	onMount(async () => {
     const res = await fetch(coinUrl)
 	coins = await res.json();
@@ -43,8 +44,21 @@
 			filteredCoins.push(val);
 			return filteredCoins
             }
-          })
-		  searchCoins = filteredCoins;
+			searchCoins = filteredCoins;
+			console.log(searchCoins + " search coins")
+		    console.log(searchCoins.length + " length coins")
+
+// COULD BE AN AWAIT PROBLEM!!
+
+			// if(searchCoins.length === 0 && searchName == ""){
+			// 	matchingCoins = true;
+			// }
+			// else if(searchName.length > 0 && searchCoins != ""){
+			// 	matchingCoins = false;
+			// }else{
+			// 	matchingCoins = true;
+			// }
+          });
 	}
 </script>
 <main class="text-center">
@@ -55,17 +69,17 @@
   <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
 </svg>
 	</div>
-	
-	<div class="flex bg-blue-900 justify-center">
+	<p class="text-red">{matchingCoins = true ? "" : "no matches"}</p>
+	<!-- <div class="flex bg-blue-900 justify-center"> -->
 	{#if coins.length === 0}
-	<div class="bg-blue-900 justify-center m-auto	">
+	<div class="bg-blue-900 justify-center m-auto">
 	<img src="/spinner.gif" alt="loading"  class="w-32 h-32 my-40"/>
 	</div>
 	{:else}
-	<div class="flex flex-wrap bg-blue-900 justify-center m-auto">
+	<div class="flex flex-wrap bg-blue-900 justify-center m-auto ">
 	{#if searchCoins.length === 0}
     {#each coins as coin }
-		<div class=" relative bg-gray-200 rounded shadow-md m-2 p-2 max-w-md w-full sm:w-80 ">
+		<div class=" relative bg-gray-200 rounded shadow-md m-2 p-2 max-w-md w-full sm:w-80 mx-4">
 			{#if coins.indexOf(coin) === 0}
 			<Gold class="w-4 h-4"/>
 			{/if}
@@ -133,7 +147,7 @@
 	
 </div>;
 	{/if}
-</div>
+<!-- </div> -->
 </main>
 
 <style global lang="postcss">

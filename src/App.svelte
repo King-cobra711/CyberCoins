@@ -1,28 +1,38 @@
 <script>
 	import { onMount } from "svelte";
-    import { each } from "svelte/internal";
+    import { each, text } from "svelte/internal";
+    import  Gold  from "./medals/gold.svelte";
+    import  Silver  from "./medals/silver.svelte";
+    import  Bronze  from "./medals/bronze.svelte";
     
-
     // export let coinData;
 	
-	const coinUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
+	const coinUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
 
 	let coins = [];
+	let spin = false;
+	let searchName = "";
+	let coinName = [];
 	onMount(async () => {
     const res = await fetch(coinUrl)
 	coins = await res.json();
 	})
 	const refresh = (async () => {
 	coins = [];
+	spin = true;
+	setTimeout(()=>{spin = false}, 200);
     const res = await fetch(coinUrl)
 	coins = await res.json();
 	});
+	const search = (event) => {
+    
+	}
 </script>
-
 <main class="text-center">
-	<h1 class="tracking-widest bg-blue-900 pb-3 pt-8 text-5xl sm:text-7xl lg:text-9xl text-white ">CyberCoins</h1>
-	<div class="flex justify-center bg-blue-900 py-2">
-		<svg on:click={refresh} xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white bg-blue-900" viewBox="0 0 20 20" fill="currentColor">
+	<h1 class="tracking-widest bg-blue-900 pb-8 pt-4 text-5xl sm:text-7xl lg:text-9xl text-white underline ">CyberCoins</h1>
+	<div class="flex justify-center bg-blue-900 py-2" on:change={search}>
+		<input class="w-2/3 max-w-4xl mr-3 text-xl lg:text-4xl" placeholder="   search...">
+		<svg on:click={refresh} xmlns="http://www.w3.org/2000/svg" class="transform: scaleY(-1) h-10 w-10 text-white bg-blue-900 {spin === true ? 'animate-reverse-spin' : 'animate-none'}" viewBox="0 0 20 20" fill="currentColor">
   <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
 </svg>
 	</div>
@@ -30,12 +40,22 @@
 	<div class="flex bg-blue-900 justify-center">
 	{#if coins.length === 0}
 	<div class="bg-blue-900 justify-center m-auto	">
-	<img src="/spinner.gif" alt="loading"  class="w-32 h-32 my-38"/>
+	<img src="/spinner.gif" alt="loading"  class="w-32 h-32 my-40"/>
 	</div>
 	{:else}
 	<div class="flex flex-wrap bg-blue-900 justify-center m-auto">
 	{#each coins as coin }
-		<div class=" bg-gray-200 rounded shadow-md m-2 p-2 max-w-md w-full sm:w-80 ">
+		<div class=" relative bg-gray-200 rounded shadow-md m-2 p-2 max-w-md w-full sm:w-80 ">
+			{#if coins.indexOf(coin) === 0}
+			<Gold class="w-4 h-4"/>
+			{/if}
+			{#if coins.indexOf(coin) === 1}
+			<Silver/>
+			{/if}
+			{#if coins.indexOf(coin) === 2}
+			<Bronze/>
+			{/if}
+			<h2 class="font-bold text-3xl absolute"># {coins.indexOf(coin) + 1}</h2>
 			<img class="w-32 h-32 rounded-full mx-auto" src={coin.image} alt="crypto coin" width="384" height="512">
 			<div class="grid grid-rows-2 grid-flow-col gap-1">
 			<div class="row-span-1 col-span-1 ..."><h2 class="capitalize font-bold m-0.5 flex-auto">{coin.id}</h2></div>
@@ -53,14 +73,6 @@
 				{/if}
 			
 		</div>
-			<!-- <div class="flex"><h2 class="capitalize font-bold m-0.5 flex-auto">{coin.id}</h2> 
-			<p class="flex-auto text-right pr-4">timer</p>
-			</div>
-			<div class="flex">
-				<p class="flex-auto {coin.price_change_percentage_1h_in_currency < 0 ? 'text-red-600' : 'text-green-600'} m-0.5">{Math.round(coin.price_change_percentage_1h_in_currency * 100) / 100}%</p>
-				<p class="flex-auto text-right pr-4">{Date.now() - new Date(coin.last_updated)}</p>
-			</div> -->
-			
 			<p>Current price: ${Math.round(coin.current_price * 1000) / 1000} (AUD)</p>
 		</div>
 	{/each}

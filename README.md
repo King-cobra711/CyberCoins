@@ -18,6 +18,7 @@ The project is a simple cryptocurrencey trends tracker through use of API fetch 
 - Open the terminal and use the `cd` to navigate to your desktop or your preffered location to store this project.
 - Once there use the command `mkdir CryptoCoins` to create a new folder entitled CryptoCoins.
 - Now use the command `git clone https://github.com/King-cobra711/CyberCoins.git` to copy the project files from the github repository
+- go to the CyberCoins folder that was just created and in the terminal use `npm i` to install al depedencies for the project.
 
 ## Starting the App
 

@@ -30,4 +30,4 @@ The project is a simple cryptocurrencey trends tracker through use of API fetch 
 
 - [Mad Devs](https://dev.to/maddevs/how-to-deploy-a-project-on-heroku-3naf). Awesome resource for setting up deployment to heroku.
 
-[cybercoins](https://cybercoins.herokuapp.com/)
+- [https://cybercoins.herokuapp.com](https://cybercoins.herokuapp.com/)

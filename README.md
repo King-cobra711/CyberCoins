@@ -2,7 +2,7 @@
 
 ## Description
 
-The project is a simple cryptocurrencey trends tracker through use of API fetch requests. API comes from [coingecko](https://www.coingecko.com/) and the application utilises svelte (component framework) and tailwind CSS framework.
+The project is a simple cryptocurrency trends tracker through use of API fetch requests. API comes from [coingecko](https://www.coingecko.com/) and the application utilises svelte (component framework) and tailwind CSS framework.
 
 ## Technologies
 
